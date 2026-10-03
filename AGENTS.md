@@ -48,7 +48,7 @@ Agents.md
 6. **Email failure must not fail the order.** Save the order first, then send the email, then record `email_status`.
 7. **Images**: local files in `public/covers`. No remote image URLs.
 8. **Env vars** (never hardcode, never commit `.env.local`, always maintain `.env.example`):
-   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `NEXT_PUBLIC_SITE_URL`
+   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `NEXT_PUBLIC_SITE_URL`
 9. TypeScript strict, no `any`. Small components with one job.
 10. Show loading, empty, and error states.
 
