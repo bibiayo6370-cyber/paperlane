@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9f1239"/><stop offset="1" stop-color="#fb7185"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<circle cx="700" cy="80" r="160" fill="white" fill-opacity="0.08"/>
+<circle cx="90" cy="540" r="120" fill="white" fill-opacity="0.08"/>
+<g transform="translate(400 230)"><path d="M-95 -10 L95 -10 C95 60 50 90 0 90 C-50 90 -95 60 -95 -10 Z" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M-40 -40 C-50 -60 -30 -70 -40 -90 M0 -40 C-10 -60 10 -70 0 -90 M40 -40 C30 -60 50 -70 40 -90" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="400" y="430" text-anchor="middle" font-family="sans-serif" font-size="46" font-weight="700" fill="white">30-Minute Meals</text>
+<rect x="320" y="470" width="160" height="40" rx="20" fill="white" fill-opacity="0.2"/>
+<text x="400" y="497" text-anchor="middle" font-family="sans-serif" font-size="20" fill="white" letter-spacing="2">BOOKS</text>
+</svg>
