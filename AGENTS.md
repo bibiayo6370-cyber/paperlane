@@ -75,3 +75,10 @@ Small commits: `feat:`, `fix:`, `chore:`, `docs:`.
 
 ## Definition of Done
 Every PRD success criterion passes on the live URL.
+
+## Money
+- Store all money as integers in minor units (`price_minor`, `total_minor`): cents for USD, kobo for NGN. Never use floats.
+- Base currency is USD. Every product and order has a `currency` column (default `USD`).
+- Format with `Intl.NumberFormat` through one helper in `src/lib/money.ts`. Never format prices by hand.
+- Orders copy `currency` and item prices from the product at purchase time. Compute totals on the server from the `products` table.
+- Later: approximate naira display via an exchange rate, then local naira pricing. Do not build either now.

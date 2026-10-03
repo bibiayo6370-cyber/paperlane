@@ -28,9 +28,9 @@ A small online shop selling digital products (templates, PDF books, wallpapers).
 6. **Downloads**: files live in a private Supabase Storage bucket. The download button calls a server route that checks the order belongs to the user and returns a short-lived signed URL.
 
 ## Data Model (Postgres on Supabase)
-- **products**: `id`, `slug` (unique), `title`, `description`, `price_cents`, `category`, `cover_path`, `file_path`, `file_name`
-- **orders**: `id`, `user_id` (auth user), `email`, `total_cents`, `email_status` (`sent` | `failed`), `created_at`
-- **order_items**: `id`, `order_id`, `product_id`, `title`, `price_cents`
+- **products**: `id`, `slug` (unique), `title`, `description`, `price_minor`, `category`, `cover_path`, `file_path`, `file_name`
+- **orders**: `id`, `user_id` (auth user), `email`, `total_minor`, `email_status` (`sent` | `failed`), `created_at`
+- **order_items**: `id`, `order_id`, `product_id`, `title`, `price_minor`
 
 Row Level Security on all tables:
 - `products`: anyone can read.
