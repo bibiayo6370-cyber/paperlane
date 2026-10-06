@@ -1,3 +1,4 @@
+import AddToCartButton from "@/components/AddToCartButton";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -34,6 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <p className="text-2xl">{formatMoney(product.price_minor, product.currency)}</p>
           <p className="text-muted-foreground">{product.description}</p>
           <p className="text-sm text-muted-foreground">Digital download. Available in your orders right after checkout.</p>
+          <AddToCartButton product={product} />
         </div>
       </div>
     </div>

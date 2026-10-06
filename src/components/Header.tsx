@@ -1,3 +1,4 @@
+import CartLink from "@/components/CartLink";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { signOut } from "@/app/actions/auth";
@@ -16,6 +17,7 @@ export default async function Header() {
           Paperlane
         </Link>
         <nav className="flex items-center gap-2">
+          <CartLink />
           {user ? (
             <>
               <span className="hidden text-sm text-muted-foreground sm:inline">{user.email}</span>

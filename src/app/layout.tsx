@@ -1,3 +1,4 @@
+import { CartProvider } from "@/components/CartProvider";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
@@ -25,9 +26,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><Header />
+      <body className="min-h-full flex flex-col"><CartProvider>
+        <Header />
         <main>{children}</main>
-        <Toaster /></body>
+        <Toaster />
+        </CartProvider></body>
     </html>
   );
 }
