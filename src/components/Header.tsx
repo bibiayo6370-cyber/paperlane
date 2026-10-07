@@ -20,6 +20,9 @@ export default async function Header() {
           <CartLink />
           {user ? (
             <>
+              <Link href="/orders" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+                My orders
+              </Link>
               <span className="hidden text-sm text-muted-foreground sm:inline">{user.email}</span>
               <form action={signOut}>
                 <Button type="submit" variant="outline" size="sm">

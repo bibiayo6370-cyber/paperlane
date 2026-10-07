@@ -39,19 +39,24 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
   return (
     <div className="mx-auto max-w-3xl space-y-6 px-4 py-8">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Order confirmed</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Your order</h1>
         <p className="mt-1 text-muted-foreground">Order {order.id.slice(0, 8).toUpperCase()}</p>
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>Items</CardTitle>
+          <CardTitle>Items and downloads</CardTitle>
           <CardDescription>Placed {new Date(order.created_at).toLocaleString("en-US")}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
+        <CardContent className="space-y-4">
           {order.order_items.map((item) => (
-            <div key={item.id} className="flex items-center justify-between gap-4">
-              <p>{item.title}</p>
-              <p className="text-muted-foreground">{formatMoney(item.price_minor, order.currency)}</p>
+            <div key={item.id} className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-medium">{item.title}</p>
+                <p className="text-sm text-muted-foreground">{formatMoney(item.price_minor, order.currency)}</p>
+              </div>
+              <a href={`/api/download/${item.id}`} className={buttonVariants({ size: "sm" })}>
+                Download
+              </a>
             </div>
           ))}
           <div className="flex items-center justify-between border-t pt-3 font-semibold">
@@ -60,10 +65,15 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
           </div>
         </CardContent>
       </Card>
-      <p className="text-sm text-muted-foreground">Email status: {order.email_status}</p>
-      <Link href="/" className={buttonVariants({ variant: "outline" })}>
-        Continue shopping
-      </Link>
+      <p className="text-sm text-muted-foreground">Confirmation email to {order.email}: {order.email_status}</p>
+      <div className="flex gap-3">
+        <Link href="/orders" className={buttonVariants({ variant: "outline" })}>
+          All orders
+        </Link>
+        <Link href="/" className={buttonVariants({ variant: "outline" })}>
+          Continue shopping
+        </Link>
+      </div>
     </div>
   );
 }

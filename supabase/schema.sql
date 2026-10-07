@@ -135,3 +135,19 @@ $$;
 
 revoke all on function public.set_email_status(uuid, text) from public, anon;
 grant execute on function public.set_email_status(uuid, text) to authenticated;
+
+-- Storage: a user may read a file in the private bucket only if they bought it
+create policy "Buyers can read purchased files"
+  on storage.objects for select
+  to authenticated
+  using (
+    bucket_id = 'downloads'
+    and exists (
+      select 1
+      from public.order_items oi
+      join public.orders o on o.id = oi.order_id
+      join public.products p on p.id = oi.product_id
+      where o.user_id = (select auth.uid())
+        and p.file_path = storage.objects.name
+    )
+  );
