@@ -115,3 +115,23 @@ $$;
 
 revoke all on function public.create_order(uuid[]) from public, anon;
 grant execute on function public.create_order(uuid[]) to authenticated;
+
+-- Lets a user record the email result for their own order only
+create or replace function public.set_email_status(p_order_id uuid, p_status text)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if p_status not in ('sent', 'failed') then
+    raise exception 'Invalid status';
+  end if;
+  update public.orders
+     set email_status = p_status
+   where id = p_order_id and user_id = auth.uid();
+end;
+$$;
+
+revoke all on function public.set_email_status(uuid, text) from public, anon;
+grant execute on function public.set_email_status(uuid, text) to authenticated;
